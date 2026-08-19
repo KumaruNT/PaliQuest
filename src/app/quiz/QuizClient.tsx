@@ -81,13 +81,13 @@ export default function QuizClient({ quizId, questions }: { quizId: string, ques
               <button
                 key={idx}
                 onClick={() => handleSelectOption(option)}
-                className={`w-full text-left p-4 rounded-xl border-2 transition-all font-serif text-lg ${
+                className={`w-full text-left p-4 rounded-xl border-2 transition-all font-serif text-lg leading-relaxed ${
                   isSelected 
-                    ? 'border-zen-accent bg-zen-accent/5 text-zen-ink' 
-                    : 'border-zen-border/50 hover:border-zen-accent/30 text-zen-ink/80'
+                    ? 'border-zen-accent bg-zen-accent/10 text-slate-900 font-bold' 
+                    : 'border-zen-border hover:border-zen-accent/50 text-slate-800 font-medium'
                 }`}
               >
-                {option}
+                {option.replace(/[()]/g, '')}
               </button>
             );
           })}
