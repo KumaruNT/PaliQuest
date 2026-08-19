@@ -104,7 +104,7 @@ export default async function Home() {
           
           {/* Pills row mimicking Thunder */}
           <div className="animate-slide-up opacity-0 delay-300 flex flex-wrap justify-center gap-3 mb-12">
-            <span className="bg-white text-slate-600 px-5 py-2.5 rounded-full text-sm font-bold border border-slate-200 shadow-sm flex items-center gap-2"><BookOpen size={16} className="text-blue-500"/> ๓๖ หมวด ๔๕๐ หัวข้อ</span>
+            <span className="bg-white text-slate-600 px-5 py-2.5 rounded-full text-sm font-bold border border-slate-200 shadow-sm flex items-center gap-2"><BookOpen size={16} className="text-blue-500"/> เนื้อหา ๔ ภาคหลัก</span>
             <span className="bg-white text-slate-600 px-5 py-2.5 rounded-full text-sm font-bold border border-slate-200 shadow-sm flex items-center gap-2"><Play size={16} className="text-indigo-500"/> ฝึกจำสไตล์เกม</span>
             <span className="bg-white text-slate-600 px-5 py-2.5 rounded-full text-sm font-bold border border-slate-200 shadow-sm flex items-center gap-2"><Target size={16} className="text-pink-500"/> บอกจุดออกสอบบ่อย</span>
           </div>
