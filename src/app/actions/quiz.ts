@@ -72,9 +72,15 @@ export async function generatePersonalizedQuiz(questionCount = 5) {
     const questionText = sentence.pali;
     const correctOption = sentence.translation;
     
-    // Pick 3 random wrong options from other sentences
+    // Pick 3 random wrong options with similar length to the correct option
     const otherSentences = sentences.filter(s => s.id !== sentence.id);
-    const wrongSentences = shuffle(otherSentences).slice(0, 3);
+    otherSentences.sort((a, b) => {
+      const diffA = Math.abs(a.translation.length - correctOption.length);
+      const diffB = Math.abs(b.translation.length - correctOption.length);
+      return diffA - diffB;
+    });
+    const closestSentences = otherSentences.slice(0, 15);
+    const wrongSentences = shuffle(closestSentences).slice(0, 3);
     const wrongOptions = wrongSentences.map(s => s.translation);
     
     const options = shuffle([correctOption, ...wrongOptions]);
