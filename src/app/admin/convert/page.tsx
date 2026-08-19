@@ -7,8 +7,8 @@ import * as mammoth from 'mammoth';
 
 export default function AdminImportPage() {
   const [partNumber, setPartNumber] = useState<number>(1);
-  const [gaengId, setGaengId] = useState<string>('');
   const [gaengOrder, setGaengOrder] = useState<number>(1);
+  const gaengId = `part${partNumber}-gaeng${gaengOrder.toString().padStart(2, '0')}`;
   const [file, setFile] = useState<File | null>(null);
   const [canonicalJson, setCanonicalJson] = useState<any>(null);
   const [error, setError] = useState<string>('');
@@ -170,10 +170,6 @@ export default function AdminImportPage() {
   };
 
   const handleValidate = async () => {
-    if (!gaengId) {
-      setError('กรุณาระบุรหัสเก็ง (ID) ก่อนทำการอัปโหลด');
-      return;
-    }
     if (!gaengOrder || gaengOrder <= 0) {
       setError('กรุณาระบุเก็งที่ (Order) ให้ถูกต้องก่อนทำการอัปโหลด');
       return;
@@ -331,13 +327,13 @@ export default function AdminImportPage() {
 
               {/* Gaeng ID */}
               <div>
-                <label className="block text-sm font-bold text-zen-ink mb-2">รหัส ID</label>
+                <label className="block text-sm font-bold text-zen-ink mb-2">รหัส ID (สร้างอัตโนมัติ)</label>
                 <input 
                   type="text"
                   value={gaengId}
-                  onChange={(e) => setGaengId(e.target.value)}
-                  className="w-full p-3 border border-zen-border rounded-xl bg-zen-bg text-zen-ink focus:outline-none focus:ring-2 focus:ring-zen-accent font-mono text-sm"
-                  placeholder="เช่น part1-gaeng-001-v2"
+                  readOnly
+                  disabled
+                  className="w-full p-3 border border-zen-border rounded-xl bg-zen-bg/50 text-zen-ink/60 focus:outline-none font-mono text-sm cursor-not-allowed"
                 />
               </div>
             </div>
